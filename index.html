@@ -44,6 +44,25 @@
             margin-top: 40px;
             background: #eee;
         }
+
+        /* Flex container for the logo + description */
+        .intro-row {
+            display: flex;
+            align-items: flex-start;   /* top‑align the text with the image */
+            gap: 16px;                 /* space between logo and paragraph */
+            margin-bottom: 20px;       /* give a little breathing room before the next heading */
+        }
+        
+        /* Make sure the logo doesn’t stretch */
+        .intro-row img.logo {
+            flex-shrink: 0;            /* keep its intrinsic size */
+        }
+        
+        /* Optional: tighten the paragraph line‑height for a cleaner look */
+        .intro-row p.description {
+            margin: 0;                 /* remove default margins */
+            line-height: 1.45;
+        }
     </style>
 </head>
 <body>
