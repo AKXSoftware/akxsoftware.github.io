@@ -69,14 +69,17 @@
             gap: 15px;
         }
         .gallery img {
-            max-width: 300px;
+            width: 300px;          /* fixed width so scaling is noticeable */
+            height: auto;
             border: 2px solid #ccc;
             border-radius: 5px;
-            transition: transform 0.2s ease;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+            cursor: pointer;
         }
         .gallery img:hover {
-            transform: scale(1.05);
+            transform: scale(1.25);   /* bigger scale so it’s obvious */
             border-color: #007BFF;
+            z-index: 10;              /* ensures it appears above neighbours */
         }
     </style>
 </head>
