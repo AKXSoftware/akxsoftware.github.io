@@ -63,79 +63,21 @@
             margin: 0;
             line-height: 1.45;
         }
-
-        /* ----------------------------- */
-        /* MANUAL CAROUSEL (CSS ONLY)   */
-        /* ----------------------------- */
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .carousel input {
-            display: none;
-        }
-
-        .carousel .slides {
+        .gallery {
             display: flex;
-            width: 300%;
-            transition: transform 0.5s ease;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-
-        .carousel .slide {
-            width: 100%;
-            flex-shrink: 0;
-            text-align: center;
+        .gallery img {
+            max-width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.2s ease;
         }
-
-        .carousel img {
-            width: 100%;
-            height: auto;
-            max-height: 350px;
-            object-fit: contain;
-            background: #000;
-            display: block;
-            margin: 0 auto;
+        .gallery img:hover {
+            transform: scale(1.05);
+            border-color: #007BFF;
         }
-
-        /* Navigation dots */
-        .carousel .controls {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .carousel .controls label {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin: 0 6px;
-            background: #bbb;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        /* Active dot */
-        #slide1:checked ~ .controls label[for="slide1"],
-        #slide2:checked ~ .controls label[for="slide2"],
-        #slide3:checked ~ .controls label[for="slide3"] {
-            background: #0047ab;
-        }
-
-        /* Slide movement */
-        #slide1:checked ~ .slides {
-            transform: translateX(0%);
-        }
-        #slide2:checked ~ .slides {
-            transform: translateX(-100%);
-        }
-        #slide3:checked ~ .slides {
-            transform: translateX(-200%);
-        }
-
     </style>
 </head>
 
@@ -175,39 +117,11 @@
         </ul>
 
         <h3>Screenshots</h3>
-
-        <!-- MANUAL CAROUSEL -->
-        <div class="carousel">
-
-            <input type="radio" name="slides" id="slide1" checked>
-            <input type="radio" name="slides" id="slide2">
-            <input type="radio" name="slides" id="slide3">
-
-            <div class="slides">
-                <div class="slide">
-                    <img src="/assets/images/001_Home.png"
-                         alt="BookArchive Home page showing dashboard information">
-                </div>
-
-                <div class="slide">
-                    <img src="/assets/images/002_AddBook.png"
-                         alt="BookArchive Add Book page">
-                </div>
-
-                <div class="slide">
-                    <img src="/assets/images/003_Library.png"
-                         alt="BookArchive Library page showing the List view">
-                </div>
-            </div>
-
-            <div class="controls">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-            </div>
-
+        <div class="gallery">
+            <img src="/assets/images/001_Home.png" alt="BookArchive Home page showing dashboard information">
+            <img src="/assets/images/002_AddBook.png" alt="BookArchive Add Book page">
+            <img src="/assets/images/003_Library.png" alt="BookArchive Library page showing the List view">
         </div>
-
     </section>
 
     <section class="app-card">
