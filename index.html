@@ -5,6 +5,7 @@
     <title>AKXSoftware – Support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,20 +14,24 @@
             background: #f7f7f7;
             color: #333;
         }
+
         header {
             background: #0047ab;
             color: white;
             padding: 20px;
             text-align: center;
         }
+
         main {
             max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
         }
+
         h2 {
             color: #2d2d2d;
         }
+
         .app-card {
             background: white;
             padding: 20px;
@@ -34,11 +39,7 @@
             margin-bottom: 30px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-        img.screenshot {
-            max-width: 100%;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -46,67 +47,99 @@
             background: #eee;
         }
 
-        /* Flex container for the logo + description */
+        /* Intro row */
         .intro-row {
             display: flex;
-            align-items: flex-start;   /* top‑align the text with the image */
-            gap: 16px;                 /* space between logo and paragraph */
-            margin-bottom: 20px;       /* give a little breathing room before the next heading */
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
         }
-        
-        /* Make sure the logo doesn’t stretch */
+
         .intro-row img.logo {
-            flex-shrink: 0;            /* keep its intrinsic size */
+            flex-shrink: 0;
         }
-        
-        /* Optional: tighten the paragraph line‑height for a cleaner look */
+
         .intro-row p.description {
-            margin: 0;                 /* remove default margins */
+            margin: 0;
             line-height: 1.45;
         }
 
-		.carousel {
-		    width: 100%;
-		    max-width: 100%;
-		    overflow: hidden;
-		    border-radius: 8px;
-		    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-		    margin-top: 10px;
-		}
-		
-		/* NEW: control height */
-		.carousel img {
-		    width: auto;
-		    height: 100%;
-		    max-height: 350px;   /* adjust to taste */
-		    object-fit: contain; /* prevents cropping */
-		    background: #000;    /* optional: adds letterboxing */
-		}
-		.carousel .slides {
-		    display: flex;
-		    width: 300%;
-		    animation: slide 12s infinite;
-		}
-		
-		.carousel img {
-		    width: 100%;
-		    object-fit: cover;
-		}
-		
-		@keyframes slide {
-		    0%   { transform: translateX(0%); }
-		    30%  { transform: translateX(0%); }
-		
-		    33%  { transform: translateX(-100%); }
-		    63%  { transform: translateX(-100%); }
-		
-		    66%  { transform: translateX(-200%); }
-		    96%  { transform: translateX(-200%); }
-		
-		    100% { transform: translateX(0%); }
-		}
+        /* ----------------------------- */
+        /* MANUAL CAROUSEL (CSS ONLY)   */
+        /* ----------------------------- */
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-top: 10px;
+            background: #000;
+        }
+
+        .carousel input {
+            display: none;
+        }
+
+        .carousel .slides {
+            display: flex;
+            width: 300%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel .slide {
+            width: 100%;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: contain;
+            background: #000;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Navigation dots */
+        .carousel .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .carousel .controls label {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 6px;
+            background: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Active dot */
+        #slide1:checked ~ .controls label[for="slide1"],
+        #slide2:checked ~ .controls label[for="slide2"],
+        #slide3:checked ~ .controls label[for="slide3"] {
+            background: #0047ab;
+        }
+
+        /* Slide movement */
+        #slide1:checked ~ .slides {
+            transform: translateX(0%);
+        }
+        #slide2:checked ~ .slides {
+            transform: translateX(-100%);
+        }
+        #slide3:checked ~ .slides {
+            transform: translateX(-200%);
+        }
+
     </style>
 </head>
+
 <body>
 
 <header>
@@ -119,12 +152,13 @@
 
     <section class="app-card">
         <h2>BookArchive</h2>
+
         <div class="intro-row">
             <img src="/assets/images/BookArchiveLogo.svg"
                  alt="BookArchive logo"
                  class="logo"
                  width="64" height="auto">
-    
+
             <p class="description">
                 BookArchive is a lightweight desktop application designed to help you
                 catalogue, search, and manage your personal book collection.
@@ -137,18 +171,44 @@
             <li>Automatic metadata lookup (title, author, cover) using OpenLibrary and Google Books</li>
             <li>Search and filter your collection</li>
             <li>Track reading status and notes</li>
-            <li>Bulk import support via csv files</li>
-			<li>Ability to backup and restore the database contents using JSON files</li>
+            <li>Bulk import support via CSV files</li>
+            <li>Backup and restore the database using JSON files</li>
         </ul>
 
         <h3>Screenshots</h3>
-		<div class="carousel">
-			<div class="slides">
-				<img src="/assets/images/001_Home.png" alt="BookArchive Home page showing dashboard information">
-				<img src="/assets/images/002_AddBook.png" alt="BookArchive Add Book page">
-				<img src="/assets/images/003_Library.png" alt="BookArchive Library page showing the List view">
-			</div>
-		</div>
+
+        <!-- MANUAL CAROUSEL -->
+        <div class="carousel">
+
+            <input type="radio" name="slides" id="slide1" checked>
+            <input type="radio" name="slides" id="slide2">
+            <input type="radio" name="slides" id="slide3">
+
+            <div class="slides">
+                <div class="slide">
+                    <img src="/assets/images/001_Home.png"
+                         alt="BookArchive Home page showing dashboard information">
+                </div>
+
+                <div class="slide">
+                    <img src="/assets/images/002_AddBook.png"
+                         alt="BookArchive Add Book page">
+                </div>
+
+                <div class="slide">
+                    <img src="/assets/images/003_Library.png"
+                         alt="BookArchive Library page showing the List view">
+                </div>
+            </div>
+
+            <div class="controls">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+            </div>
+
+        </div>
+
     </section>
 
     <section class="app-card">
