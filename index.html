@@ -64,6 +64,39 @@
             margin: 0;                 /* remove default margins */
             line-height: 1.45;
         }
+
+		.carousel {
+		    width: 100%;
+		    max-width: 100%;
+		    overflow: hidden;
+		    border-radius: 8px;
+		    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+		    margin-top: 10px;
+		}
+		
+		.carousel .slides {
+		    display: flex;
+		    width: 300%;
+		    animation: slide 12s infinite;
+		}
+		
+		.carousel img {
+		    width: 100%;
+		    object-fit: cover;
+		}
+		
+		@keyframes slide {
+		    0%   { transform: translateX(0%); }
+		    30%  { transform: translateX(0%); }
+		
+		    33%  { transform: translateX(-100%); }
+		    63%  { transform: translateX(-100%); }
+		
+		    66%  { transform: translateX(-200%); }
+		    96%  { transform: translateX(-200%); }
+		
+		    100% { transform: translateX(0%); }
+		}
     </style>
 </head>
 <body>
