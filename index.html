@@ -74,6 +74,14 @@
 		    margin-top: 10px;
 		}
 		
+		/* NEW: control height */
+		.carousel img {
+		    width: 100%;
+		    height: auto;
+		    max-height: 350px;   /* adjust to taste */
+		    object-fit: contain; /* prevents cropping */
+		    background: #000;    /* optional: adds letterboxing */
+		}
 		.carousel .slides {
 		    display: flex;
 		    width: 300%;
